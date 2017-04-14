@@ -12,6 +12,7 @@ services:
     volumes:
      - ./vol_source:/vol_source
      - ./vol_tmp:/tmp  
+     - ./vol_config/php.ini:/user/local/etc/php/conf.d/php.ini
     links:
      - db:mysql
   db:
