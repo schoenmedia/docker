@@ -18,9 +18,9 @@ services:
   db:
     image: mariadb:latest
     environment:
-      MYSQL_DATABASE: 'shopware'
-      MYSQL_USER: 'shopware'
-      MYSQL_PASSWORD: 'shopware'
+      MYSQL_DATABASE: 'project'
+      MYSQL_USER: 'project'
+      MYSQL_PASSWORD: 'project'
       MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
     volumes:
      - ./vol_database:/var/lib/mysql
