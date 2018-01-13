@@ -1,1 +1,2 @@
-# Docker Setup for php Development
+# Docker setup for php development
+
