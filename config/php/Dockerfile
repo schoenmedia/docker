@@ -4,7 +4,7 @@ FROM php:7.1.13-fpm
 ENV COMPOSER_HOME   	$HOME/.composer
 ENV HOME 		/home/root
 ENV PHPUNIT_VERSION 	5.7.19
-ENV GITHUB_TOKEN	a67ac410d97af317cc9e1b89eb4997db149b4c56	
+ENV GITHUB_TOKEN	
 ENV PATH            	vendor/bin:$COMPOSER_HOME/vendor/bin:$PATH
 
 # Install build dependencies.
