@@ -16,13 +16,31 @@ RUN apt-get update && apt-get install -y \
         libjpeg62-turbo-dev \
         libpng12-dev \
     && docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
-    && docker-php-ext-install -j$(nproc) gd mbstring mysql mysqli pdo pdo_mysql soap
+    && docker-php-ext-install -j$(nproc) gd mbstring mysqli pdo pdo_mysql soap
     
 RUN apt-get install -y libmcrypt-dev
 RUN docker-php-ext-install mcrypt
 
 RUN apt-get install -y libicu-dev
-RUN pecl install intl
+
+RUN apt-get install icu-devtools \
+                    icu-doc \
+                    libicu-dev \
+                    libicu52 \
+                    libicu52-dbg -y
+
+RUN mkdir /tmp/php-source
+WORKDIR /tmp/php-source
+RUN wget 'http://be2.php.net/distributions/php-7.1.7.tar.bz2' && \
+    tar xvjf php-7.1.7.tar.bz2
+WORKDIR /tmp/php-source/php-7.1.7/ext/intl
+RUN phpize && \
+    ./configure --enable-intl && \
+    make && \
+    make install
+WORKDIR /
+
+
 RUN docker-php-ext-install intl
 
 
